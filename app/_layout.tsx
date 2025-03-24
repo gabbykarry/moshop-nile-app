@@ -1,7 +1,6 @@
-import {StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useFonts } from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { Slot, useRouter, useSegments } from "expo-router";
 import { Provider, useDispatch, useSelector } from "react-redux";
@@ -9,19 +8,16 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import store, { AppDispatch, RootState } from "@/store/store";
 import GlobalToast from "@/components/GlobalToast";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import {setToken } from "@/store/authSlice";
+import { setToken } from "@/store/authSlice";
 import { setupAuthListener } from "@/hooks/authService";
 import { fetchProducts } from "@/store/productsSlice";
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   return (
     <Provider store={store}>
       <GestureHandlerRootView style={styles.container}>
         <MainContent />
-        <GlobalToast /> 
+        <GlobalToast />
       </GestureHandlerRootView>
       <StatusBar style="dark" />
     </Provider>
@@ -48,19 +44,18 @@ function MainContent() {
   useEffect(() => {
     async function prepare() {
       try {
-
         dispatch(fetchProducts());
         // Restore authentication token
-        const token = await AsyncStorage.getItem('auth-token');
+        const token = await AsyncStorage.getItem("auth-token");
         if (token) {
           dispatch(setToken(token));
         }
-        
+
         // Redux in sync with Firebase
         const unsubscribe = setupAuthListener(dispatch);
-        return unsubscribe; // Clean up 
+        return unsubscribe; // Clean up
       } catch (e) {
-        console.warn('Failed to load auth token:', e);
+        console.warn("Failed to load auth token:", e);
       } finally {
         setAppReady(true);
       }
@@ -69,32 +64,24 @@ function MainContent() {
     prepare();
   }, [dispatch]);
 
- // Handle splash screen
- useEffect(() => {
-  if (appReady && loaded) {
-    SplashScreen.hideAsync();
+  // Handle navigation based on auth state
+  useEffect(() => {
+    if (!appReady || !loaded) return;
+
+    const inProtectedRoute = segments[0] === "(tabs)";
+    const inAuthRoute = segments[0] === "signIn" || segments[0] === "signUp";
+
+    // Handle navigation redirection
+    if (isAuthenticated && inAuthRoute) {
+      router.replace("/(tabs)/Home");
+    } else if (!isAuthenticated && inProtectedRoute) {
+      router.replace("/signIn");
+    }
+  }, [isAuthenticated, appReady, loaded, segments, router]);
+
+  if (!appReady || !loaded) {
+    return null;
   }
-}, [appReady, loaded]);
-
-// Handle navigation based on auth state
-useEffect(() => {
-  if (!appReady || !loaded) return;
-
-  const inProtectedRoute = segments[0] === '(tabs)';
-  const inAuthRoute = segments[0] === 'signIn' || segments[0] === 'signUp';
-  
-  // Handle navigation redirection
-  if (isAuthenticated && inAuthRoute) {
-    router.replace('/(tabs)/Home');
-  } else if (!isAuthenticated && inProtectedRoute) {
-    router.replace('/signIn');
-  }
-}, [isAuthenticated, appReady, loaded, segments, router]);
-
-
-if (!appReady || !loaded) {
-  return null;
-}
 
   return <Slot />;
 }
