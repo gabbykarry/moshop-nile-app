@@ -62,7 +62,7 @@ export default function _layout() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={[styles.iconContainer, focused && styles.activeTab]}>
-              <Feather size={20} color={focused ? "black" : "white"} />
+              <Feather name="home" size={20} color={focused ? "black" : "white"} />
             </View>
           ),
         }}

@@ -34,7 +34,7 @@ export default function CartItemCard({ item }: { item: Product }) {
         <View style={styles.quantityBox}>
           <TouchableOpacity onPress={() => dispatch(decreaseQuantity(item.id))}>
             {/* <Text style={styles.button}>−</Text> */}
-            <Feather name="minus" size={18} color="black" />
+            <Feather name="minus" size={18} color="white" />
           </TouchableOpacity>
           <Text style={styles.quantity}>{item.quantity}</Text>
           <TouchableOpacity
@@ -42,7 +42,7 @@ export default function CartItemCard({ item }: { item: Product }) {
             onPress={() => dispatch(addToCart({ ...item, quantity: 1 }))}
           >
             {/* <Text style={styles.button}>+</Text> */}
-            <Feather name="plus" size={18} color="black" />
+            <Feather name="plus" size={18} color="white" />
           </TouchableOpacity>
         </View>
       </LinearGradient>
