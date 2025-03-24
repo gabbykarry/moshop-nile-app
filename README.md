@@ -26,8 +26,8 @@
   - Fetches product details and allows adding items to the cart
 - **Build & Deployment**
   - Android APK build using EAS
-  - Download APK: [Expo Build Link](https://expo.dev/accounts/gabbykarry/projects/nileApp/builds/67a7171a-1cf5-4490-8bfa-b830fc59e28d)
-
+  - Download APK: [Expo Build Link](https://expo.dev/accounts/gabbykarry/projects/nileApp/builds/c4af3289-36f6-4aad-8b0e-ec1aac538d06)
+  - QR Code: [Scan to Download](https://drive.google.com/file/d/1_5BKbJT1z-FeIDa2e2Lu6FY0OEsXakvG/view?usp=sharing)
 
 ---
 
