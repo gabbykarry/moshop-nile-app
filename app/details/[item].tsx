@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { MoveLeft, Minus, Plus } from "lucide-react-native";
 import { Colors } from "@/constants/Colors";
 import { formatTextWithLineBreaks } from "@/constants/utils";
 import { AppDispatch, RootState } from "@/store/store";
@@ -16,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/store/cartSlice";
 import { showToast } from "@/store/toastSlice";
 import { Product } from "@/store/productsSlice";
+import { Feather } from "@expo/vector-icons";
 
 export default function ProductDetails() {
   const params = useLocalSearchParams();
@@ -71,7 +71,7 @@ export default function ProductDetails() {
         style={styles.container}
       >
         <TouchableOpacity style={styles.backbtn} onPress={() => router.back()}>
-          <MoveLeft size={24} color="black" />
+          <Feather name="arrow-left" size={24} color="black" />
         </TouchableOpacity>
 
         <View style={styles.infoBox}>
@@ -107,7 +107,7 @@ export default function ProductDetails() {
             style={styles.amountButton}
             onPress={decreaseQuantity}
           >
-            <Minus size={18} color="black" />
+            <Feather name="minus" size={18} color="black" />
           </TouchableOpacity>
 
           <Text style={styles.amountText}>{quantity}</Text>
@@ -116,7 +116,7 @@ export default function ProductDetails() {
             style={styles.amountButton}
             onPress={increaseQuantity}
           >
-            <Plus size={18} color="black" />
+            <Feather name="plus" size={18} color="black" />
           </TouchableOpacity>
         </View>
 

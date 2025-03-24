@@ -8,11 +8,11 @@ import {
   ActivityIndicator,
 } from "react-native";
 import React, { useState, useEffect } from "react";
-import { SearchIcon } from "lucide-react-native";
 import ProductCard from "@/components/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
 import { Product } from "@/store/productsSlice";
+import { Feather } from "@expo/vector-icons";
 
 export default function Search() {
   const dispatch = useDispatch<AppDispatch>();
@@ -60,7 +60,7 @@ export default function Search() {
       {/* Search Input */}
       <View style={styles.searchBar}>
         <View style={styles.iconView}>
-          <SearchIcon size={20} color={"black"} />
+          <Feather name="search" size={20} color={"black"} />
         </View>
         <TextInput
           placeholder="Search items"

@@ -13,11 +13,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Colors } from "@/constants/Colors";
 import ProductCard from "@/components/ProductCard";
-import { ChevronRight } from "lucide-react-native";
 import { fetchProducts } from "@/store/productsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
 import { useRouter } from "expo-router";
+import { Feather } from "@expo/vector-icons";
 
 export default function Home() {
   const dispatch = useDispatch<AppDispatch>();
@@ -111,7 +111,7 @@ export default function Home() {
             style={styles.allbtn}
           >
             <Text style={styles.allText}>View all</Text>
-            <ChevronRight size={12} color={"black"} />
+            <Feather name="chevron-right" size={12} color={"black"} />
           </TouchableOpacity>
         </View>
         <FlatList

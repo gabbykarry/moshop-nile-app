@@ -11,10 +11,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { Colors } from "@/constants/Colors";
 import CartItemCard from "@/components/CartItemCard";
-import { ChevronsRight, ShoppingCart } from "lucide-react-native";
 import { cartTotal } from "@/store/cartSlice";
 import { useNavigation, useRouter } from "expo-router";
 import { showToast } from "@/store/toastSlice";
+import { Feather } from "@expo/vector-icons";
 
 export default function Cart() {
   const cart = useSelector((state: RootState) => state.cart.cart);
@@ -76,7 +76,7 @@ export default function Cart() {
           style={styles.moreView}
           onPress={() => router.replace("/(tabs)/Home")}
         >
-          <ShoppingCart size={18} color={"black"} />
+          <Feather name="shopping-cart" size={18} color={"black"} />
           <Text style={styles.more}>
             Add {cart.length < 1 ? "a product to cart" : "more"}
           </Text>
@@ -141,7 +141,7 @@ export default function Cart() {
       >
         <View style={styles.textView}>
           <Text style={styles.checkoutText}>Checkout</Text>
-          <ChevronsRight size={18} color={"white"} />
+          <Feather name="chevrons-right" size={18} color={"white"} />
         </View>
       </TouchableOpacity>
     </>

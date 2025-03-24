@@ -8,8 +8,7 @@ import {
 } from "react-native";
 import { Tabs } from "expo-router";
 import { BlurView } from "expo-blur";
-import { Ionicons, Feather } from "@expo/vector-icons"; // Using icons
-import { Heart, House, Search, ShoppingCart, User } from "lucide-react-native";
+import { Ionicons, Feather } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useSelector } from "react-redux";
 import { cartTotal } from "@/store/cartSlice";
@@ -63,8 +62,7 @@ export default function _layout() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={[styles.iconContainer, focused && styles.activeTab]}>
-              {/* <Ionicons name="home-outline" size={20} color={focused ? "black" : "white"} /> */}
-              <House size={20} color={focused ? "black" : "white"} />
+              <Feather size={20} color={focused ? "black" : "white"} />
             </View>
           ),
         }}
@@ -75,7 +73,11 @@ export default function _layout() {
           tabBarIcon: ({ focused }) => (
             <View style={[styles.iconContainer, focused && styles.activeTab]}>
               {/* <Feather name="search" size={20} color={focused ? "black" : "white"} /> */}
-              <Search size={20} color={focused ? "black" : "white"} />
+              <Feather
+                name="search"
+                size={20}
+                color={focused ? "black" : "white"}
+              />
             </View>
           ),
         }}
@@ -86,7 +88,11 @@ export default function _layout() {
           // tabBarStyle: { display: "none" },
           tabBarIcon: ({ focused }) => (
             <View style={[styles.iconContainer, focused && styles.activeTab]}>
-              <ShoppingCart size={20} color={focused ? "black" : "white"} />
+              <Feather
+                name="shopping-cart"
+                size={20}
+                color={focused ? "black" : "white"}
+              />
               {badgeNumber >= 1 && (
                 <View style={[styles.badge, { backgroundColor: color }]}>
                   <Text style={styles.badgeText}>{badgeNumber}</Text>
@@ -101,7 +107,7 @@ export default function _layout() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={[styles.iconContainer, focused && styles.activeTab]}>
-              <User size={20} color={focused ? "black" : "white"} />
+              <Feather name="user" size={20} color={focused ? "black" : "white"} />
             </View>
           ),
         }}

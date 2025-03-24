@@ -5,7 +5,7 @@ import { getRandomColor, shortenProductName } from "@/constants/utils";
 import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch } from "react-redux";
 import { addToCart, decreaseQuantity } from "@/store/cartSlice";
-import { Minus, Plus } from "lucide-react-native";
+import { Feather } from "@expo/vector-icons";
 
 export default function CartItemCard({ item }: { item: Product }) {
   const dispatch = useDispatch();
@@ -29,20 +29,20 @@ export default function CartItemCard({ item }: { item: Product }) {
         <Image source={{ uri: item.image }} style={styles.image} />
         <View style={styles.infoBox}>
           <Text style={styles.title}>{shortenProductName(item.title)}</Text>
-          <Text style={styles.price}>USD{" "}{item.price}</Text>
+          <Text style={styles.price}>USD {item.price}</Text>
         </View>
         <View style={styles.quantityBox}>
           <TouchableOpacity onPress={() => dispatch(decreaseQuantity(item.id))}>
             {/* <Text style={styles.button}>−</Text> */}
-            <Minus size={15} color="white" />
+            <Feather name="minus" size={18} color="black" />
           </TouchableOpacity>
           <Text style={styles.quantity}>{item.quantity}</Text>
           <TouchableOpacity
-           hitSlop={20}
+            hitSlop={20}
             onPress={() => dispatch(addToCart({ ...item, quantity: 1 }))}
           >
             {/* <Text style={styles.button}>+</Text> */}
-            <Plus size={15} color="white" />
+            <Feather name="plus" size={18} color="black" />
           </TouchableOpacity>
         </View>
       </LinearGradient>
@@ -79,11 +79,11 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 15,
-    fontFamily: "medium"
+    fontFamily: "medium",
   },
   price: {
     fontSize: 18,
-    fontFamily: "semibold"
+    fontFamily: "semibold",
   },
   quantityBox: {
     flexDirection: "row",
