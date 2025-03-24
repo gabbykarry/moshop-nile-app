@@ -19,13 +19,13 @@ import { Product } from "@/store/productsSlice";
 
 export default function ProductDetails() {
   const params = useLocalSearchParams();
-  const { id, title, price, image, description, category, } = params;
+  const { id, title, price, image, description, category } = params;
   const router = useRouter();
 
   const dispatch = useDispatch<AppDispatch>();
 
   const cartItems = useSelector((state: RootState) => state.cart.cart);
-  const existingCartItem = cartItems.find(item => item.id === Number(id));
+  const existingCartItem = cartItems.find((item) => item.id === Number(id));
 
   const [quantity, setQuantity] = useState(existingCartItem?.quantity || 1);
 
@@ -36,7 +36,6 @@ export default function ProductDetails() {
       setQuantity(existingCartItem.quantity || 1);
     }
   }, [existingCartItem]);
-
 
   const id2 = Number(id);
   const title2 = String(params.title);
@@ -52,10 +51,8 @@ export default function ProductDetails() {
     description: description2,
     category: category2,
     image: image2,
-    quantity: quantity
+    quantity: quantity,
   };
-
-
 
   const increaseQuantity = () => setQuantity((prev) => prev + 1);
   const decreaseQuantity = () =>
@@ -166,8 +163,8 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   image: {
-    width: 500,
-    height: 500,
+    width: "95%",
+    height: 450,
     borderRadius: 10,
     resizeMode: "contain",
     alignSelf: "center",

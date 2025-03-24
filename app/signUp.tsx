@@ -32,7 +32,7 @@ export default function SignUp() {
   const validateEmail = (text: string) => {
     setEmail(text);
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (text.trim().length=== 0) {
+    if (text.trim().length === 0) {
       setEmailError("Email is required");
     } else if (!emailRegex.test(text)) {
       setEmailError("Please enter a valid email address");
@@ -55,7 +55,6 @@ export default function SignUp() {
     }
   };
 
-  // Toggle password visibility
   const togglePasswordVisibility = () => {
     setHidePassword(!hidePassword);
   };

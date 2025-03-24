@@ -1,50 +1,35 @@
-# Welcome to your Expo app 👋
+# NileApp - React Native Technical Assessment
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Tech Stack
+- **Framework**: Expo + React Native (TypeScript)
+- **State Management**: Redux Toolkit
+- **Authentication**: Firebase Authentication (Email/Password)
+- **API**: FakeStoreAPI (https://fakestoreapi.com)
+- **Navigation**: Expo Router (Folder-based routing)
+- **UI/UX**: Custom design (by me)
 
-## Get started
+## Features Implemented
+- **Authentication**
+  - Sign In & Sign Up screens
+  - Firebase Authentication for user management
+- **Navigation**
+  - Tab-based navigation with `Home`, `Search`, `Cart`, and `Profile`
+  - `Cart`
+- **Global State Management**
+  - Used Redux for managing authentication, cart, and product state
+- **Toast Notifications**
+  - Custom toast implementation for user feedback
+- **Cart Functionality**
+  - Add to cart, increase/decrease quantity
+  - Total cart price calculation
+- **Product Details Page**
+  - Fetches product details and allows adding items to the cart
+- **Build & Deployment**
+  - Android APK build using EAS
+  - Download APK: [Expo Build Link](https://expo.dev/accounts/gabbykarry/projects/nileApp/builds/67a7171a-1cf5-4490-8bfa-b830fc59e28d)
 
-1. Install dependencies
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+My submission for the technical assessment. The main focus was implementing authentication, state management, and cart functionality efficiently using best practices.
 
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.

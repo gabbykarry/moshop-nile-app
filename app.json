@@ -4,25 +4,23 @@
     "slug": "nileApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/icon-nile.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/adaptive-icon-nile.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.gabbykarry.nileApp",
-      "googleServicesFile": "./google-services (2).json"
+      "package": "com.gabbykarry.nileApp"
     },
     "web": {
       "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "output": "static"
     },
     "plugins": ["expo-router", "expo-secure-store"],
     "experiments": {

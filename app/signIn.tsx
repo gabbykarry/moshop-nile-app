@@ -55,7 +55,6 @@ export default function SignIn() {
     }
   };
 
-  // Toggle password visibility
   const togglePasswordVisibility = () => {
     setHidePassword(!hidePassword);
   };
@@ -153,7 +152,11 @@ export default function SignIn() {
         </View>
       </View>
 
-      <TouchableOpacity disabled={!(password && email)}  onPress={handleSignIn} style={styles.buttonView}>
+      <TouchableOpacity
+        disabled={!(password && email)}
+        onPress={handleSignIn}
+        style={styles.buttonView}
+      >
         <LinearGradient
           colors={["rgba(255, 255, 255, 0.5)", "rgba(255, 255, 255, 0)"]}
           style={styles.button}

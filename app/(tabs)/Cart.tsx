@@ -14,7 +14,6 @@ import CartItemCard from "@/components/CartItemCard";
 import { ChevronsRight, ShoppingCart } from "lucide-react-native";
 import { cartTotal } from "@/store/cartSlice";
 import { useNavigation, useRouter } from "expo-router";
-import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { showToast } from "@/store/toastSlice";
 
 export default function Cart() {
@@ -210,11 +209,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontFamily: "regular",
   },
-  // btnView:{
-  //   paddingHorizontal: 15,
-  //   paddingVertical: 23,
-  //   backgroundColor: "rgba(255, 255, 255, 0.1)"
-  // },
   checkoutButton: {
     position: "absolute",
     bottom: 22,

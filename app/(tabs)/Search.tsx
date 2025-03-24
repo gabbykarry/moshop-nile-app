@@ -6,11 +6,9 @@ import {
   View,
   FlatList,
   ActivityIndicator,
-  TouchableOpacity,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { SearchIcon } from "lucide-react-native";
-import axios from "axios";
 import ProductCard from "@/components/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
@@ -18,16 +16,13 @@ import { Product } from "@/store/productsSlice";
 
 export default function Search() {
   const dispatch = useDispatch<AppDispatch>();
-  const { products, categories, loading } = useSelector(
+  const { products, loading } = useSelector(
     (state: RootState) => state.products
   );
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-  // const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // fetchProducts();
-
     if (products) {
       setFilteredProducts(products);
     }
@@ -91,8 +86,7 @@ export default function Search() {
             marginTop: 20,
             justifyContent: "space-between",
           }}
-          inverted
-          contentContainerStyle={{ flexGrow: 1, marginTop: 180 }}
+          contentContainerStyle={{ flexGrow: 1, marginBottom: 180 }}
           renderItem={({ item }) => <ProductCard item={item} />}
         />
       )}

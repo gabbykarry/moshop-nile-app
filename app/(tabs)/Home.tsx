@@ -17,21 +17,17 @@ import { ChevronRight } from "lucide-react-native";
 import { fetchProducts } from "@/store/productsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
-
+import { useRouter } from "expo-router";
 
 export default function Home() {
   const dispatch = useDispatch<AppDispatch>();
-  const { products, categories, loading } = useSelector((state: RootState) => state.products);
-    const isAuthenticated = useSelector(
-      (state: RootState) => state.auth.isAuthenticated
-    );
+  const { products, categories, loading } = useSelector(
+    (state: RootState) => state.products
+  );
   const [selectedCategory, setSelectedCategory] = React.useState("All");
   const [refreshing, setRefreshing] = React.useState(false);
 
-  // // Fetch products on mount
-  // useEffect(() => {
-  //   dispatch(fetchProducts());
-  // }, [isAuthenticated]);
+  const router = useRouter();
 
   const onRefresh = async () => {
     setRefreshing(true);
@@ -40,7 +36,9 @@ export default function Home() {
   };
 
   const filteredProducts =
-    selectedCategory === "All" ? products : products.filter((p) => p.category === selectedCategory);
+    selectedCategory === "All"
+      ? products
+      : products.filter((p) => p.category === selectedCategory);
 
   if (loading) {
     return (
@@ -108,7 +106,10 @@ export default function Home() {
       <View style={styles.section}>
         <View style={styles.sectionHeading}>
           <Text style={styles.sectionHeader}>Best Offers</Text>
-          <TouchableOpacity style={styles.allbtn}>
+          <TouchableOpacity
+            onPress={() => router.replace("/(tabs)/Search")}
+            style={styles.allbtn}
+          >
             <Text style={styles.allText}>View all</Text>
             <ChevronRight size={12} color={"black"} />
           </TouchableOpacity>
@@ -174,7 +175,6 @@ const styles = StyleSheet.create({
     gap: 3,
   },
   categoryButton: {
-
     padding: 5,
   },
   productsContainer: {
